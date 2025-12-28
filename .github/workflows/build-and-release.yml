@@ -12,82 +12,25 @@ permissions:
   contents: write
 
 jobs:
-  build:
-    name: Build VSIX
-    runs-on: windows-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup MSBuild (Visual Studio Build Tools)
-        uses: microsoft/setup-msbuild@v2
-
-      - name: Build (Release)
-        shell: pwsh
-        run: |
-          msbuild CatppuccinModernForVisualStudio.csproj /t:Build /p:Configuration=Release
-
-      - name: Package VSIX (fallback)
-        shell: pwsh
-        run: |
-          $vsixPath = "bin/Release/CatppuccinModernForVisualStudio.vsix"
-          $existing = Get-ChildItem -Path "bin/Release" -Filter "*.vsix" -ErrorAction SilentlyContinue
-          if (-not $existing) {
-            Write-Host "VSIX が生成されていないため、手動でパッケージングします"
-            $files = @(
-              "bin/Release/extension.vsixmanifest",
-              "bin/Release/LICENSE.txt"
-            ) + (Get-ChildItem -Path "bin/Release" -Filter "*.pkgdef" | ForEach-Object { $_.FullName })
-
-            if ($files.Count -eq 0) {
-              Write-Host "パッケージ対象ファイルが見つかりません。"
-              exit 1
-            }
-
-            Compress-Archive -Path $files -DestinationPath $vsixPath -Force
-            Write-Host "VSIX を生成: $vsixPath"
-          } else {
-            Write-Host "既存の VSIX を使用: $($existing[0].FullName)"
-          }
-
-      - name: List build outputs (debugging)
-        if: always()
-        shell: pwsh
-        run: |
-          Write-Host "Listing bin/Release contents"
-          Get-ChildItem -Path "bin/Release" -Recurse | Format-List
-
-      - name: Upload VSIX artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: vsix
-          path: |
-            bin/Release/*.vsix
-            bin/Release/extension.vsixmanifest
-          if-no-files-found: warn
+  # ビルドジョブは削除（ローカルビルド済みVSIXを手動アップロード）
 
   release:
-    name: Publish Release
-    needs: build
+    name: Create Release (Manual VSIX Upload)
     if: startsWith(github.ref, 'refs/tags/')
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: vsix
-          path: dist
-        continue-on-error: true
-
-      - name: Create GitHub Release and upload VSIX
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            dist/*.vsix
-            dist/extension.vsixmanifest
+          draft: false
           generate_release_notes: true
+          body: |
+            ## インストール方法
+            1. ローカルでビルドされた VSIX ファイルを手動でこのリリースに添付してください
+            2. VSIX をダウンロードしてインストール
+            3. VS2026 で `Tools > Options > Environment > General > Color theme` から選択
           token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
