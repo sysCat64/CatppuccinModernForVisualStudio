@@ -90,4 +90,4 @@ Visual Studio 2026 への対応が進行中であり、
 ### 方法2: ソースコードからビルド（開発者向け）
 
 ```bash
-git clone https://github.com/yourname/your-repo.git
+git clone https://github.com/sysCat64/CatppuccinModernForVisualStudio.git

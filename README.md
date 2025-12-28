@@ -87,4 +87,4 @@ and is not directly affiliated with the official Catppuccin project.
 ### Option 2: Build from Source (For Developers)
 
 ```bash
-git clone https://github.com/yourname/your-repo.git
+git clone https://github.com/sysCat64/CatppuccinModernForVisualStudio.git
