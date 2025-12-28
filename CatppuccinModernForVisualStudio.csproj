@@ -16,7 +16,7 @@
     <RootNamespace>CatppuccinModernForVisualStudio</RootNamespace>
     <AssemblyName>CatppuccinModernForVisualStudio</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <GeneratePkgDefFile>false</GeneratePkgDefFile>
+    <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <UseCodebase>true</UseCodebase>
     <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
     <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
@@ -49,10 +49,22 @@
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
-    <None Include="CatppuccinFrappe.vstheme" />
-    <None Include="CatppuccinLatte.vstheme" />
-    <None Include="CatppuccinMacchiato.vstheme" />
-    <None Include="CatppuccinMocha.vstheme" />
+    <None Include="CatppuccinFrappe.vstheme">
+      <Generator>VsixColorCompiler</Generator>
+      <LastGenOutput>CatppuccinFrappe.pkgdef</LastGenOutput>
+    </None>
+    <None Include="CatppuccinLatte.vstheme">
+      <Generator>VsixColorCompiler</Generator>
+      <LastGenOutput>CatppuccinLatte.pkgdef</LastGenOutput>
+    </None>
+    <None Include="CatppuccinMacchiato.vstheme">
+      <Generator>VsixColorCompiler</Generator>
+      <LastGenOutput>CatppuccinMacchiato.pkgdef</LastGenOutput>
+    </None>
+    <None Include="CatppuccinMocha.vstheme">
+      <Generator>VsixColorCompiler</Generator>
+      <LastGenOutput>CatppuccinMocha.pkgdef</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
