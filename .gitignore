@@ -1,0 +1,19 @@
+# Build outputs
+bin/
+obj/
+
+# IDE settings
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VSIX artifacts
+*.vsix
+*.pkgdef
+
+# Logs and temp
+*.log
+*.tmp
+*.temp
