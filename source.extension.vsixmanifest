@@ -4,8 +4,11 @@
         <Identity Id="CatppuccinModernForVisualStudio.e1e706e2-05d3-4da9-8754-652cd8ab65f4" Version="1.0" Language="en-US" Publisher="sysCat64" />
         <DisplayName>Catppuccin Modern for Visual Studio</DisplayName>
         <Description xml:space="preserve">This extension brings the well-known 'Catppuccin' pastel color palette to Visual Studio 2026.</Description>
+        <MoreInfo>https://github.com/sysCat64/CatppuccinModernForVisualStudio</MoreInfo>
         <License>LICENSE.txt</License>
+        <GettingStartedGuide>https://github.com/sysCat64/CatppuccinModernForVisualStudio#readme</GettingStartedGuide>
         <Icon>CatppuccinModernForVisualStudio.png</Icon>
+        <PreviewImage>images/Catppuccin.png</PreviewImage>
         <Tags>Catppuccin, VS2026, Theme</Tags>
     </Metadata>
     <Installation>
