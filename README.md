@@ -1,4 +1,4 @@
-# Catppuccin for Visual Studio 2026 (Unofficial)
+# Catppuccin Modern for Visual Studio (Unofficial)
 
 An **unofficial Catppuccin-based theme extension for Visual Studio 2026**.
 

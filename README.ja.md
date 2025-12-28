@@ -1,4 +1,4 @@
-# Catppuccin for Visual Studio 2026 (Unofficial)
+# Catppuccin Modern for Visual Studio (Unofficial)
 
 Catppuccin カラーパレットをベースにした  
 **Visual Studio 2026 向けの非公式テーマ拡張機能**です。
