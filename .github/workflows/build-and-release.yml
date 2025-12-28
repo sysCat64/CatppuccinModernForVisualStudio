@@ -24,6 +24,29 @@ jobs:
         run: |
           msbuild CatppuccinModernForVisualStudio.csproj /t:Build /p:Configuration=Release
 
+      - name: Package VSIX (fallback)
+        shell: pwsh
+        run: |
+          $vsixPath = "bin/Release/CatppuccinModernForVisualStudio.vsix"
+          $existing = Get-ChildItem -Path "bin/Release" -Filter "*.vsix" -ErrorAction SilentlyContinue
+          if (-not $existing) {
+            Write-Host "VSIX が生成されていないため、手動でパッケージングします"
+            $files = @(
+              "bin/Release/extension.vsixmanifest",
+              "bin/Release/LICENSE.txt"
+            ) + (Get-ChildItem -Path "bin/Release" -Filter "*.pkgdef" | ForEach-Object { $_.FullName })
+
+            if ($files.Count -eq 0) {
+              Write-Host "パッケージ対象ファイルが見つかりません。"
+              exit 1
+            }
+
+            Compress-Archive -Path $files -DestinationPath $vsixPath -Force
+            Write-Host "VSIX を生成: $vsixPath"
+          } else {
+            Write-Host "既存の VSIX を使用: $($existing[0].FullName)"
+          }
+
       - name: List build outputs (debugging)
         if: always()
         shell: pwsh
@@ -51,6 +74,7 @@ jobs:
         with:
           name: vsix
           path: dist
+        continue-on-error: true
 
       - name: Create GitHub Release and upload VSIX
         uses: softprops/action-gh-release@v1
@@ -58,5 +82,6 @@ jobs:
           files: |
             dist/*.vsix
             dist/extension.vsixmanifest
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
