@@ -6,7 +6,7 @@ This theme was created primarily for personal use,
 with support for the Visual Studio 2026 theme extension system.
 
 <p align="center">
-   <a href="LICENSE.txtLICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=d9e0ee&colorA=363a4f&colorB=b7bdf8"/></a>
+   <a href="LICENSE.txt"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=d9e0ee&colorA=363a4f&colorB=b7bdf8"/></a>
 </p>
 
 ---
@@ -88,3 +88,4 @@ and is not directly affiliated with the official Catppuccin project.
 
 ```bash
 git clone https://github.com/sysCat64/CatppuccinModernForVisualStudio.git
+```
