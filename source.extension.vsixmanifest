@@ -8,7 +8,7 @@
         <License>LICENSE.txt</License>
         <GettingStartedGuide>https://github.com/sysCat64/CatppuccinModernForVisualStudio#readme</GettingStartedGuide>
         <Icon>CatppuccinModernForVisualStudio.png</Icon>
-        <PreviewImage>images/Catppuccin.png</PreviewImage>
+        <PreviewImage>CatppuccinModernForVisualStudioPreview.png</PreviewImage>
         <Tags>Catppuccin, VS2026, Theme</Tags>
     </Metadata>
     <Installation>
